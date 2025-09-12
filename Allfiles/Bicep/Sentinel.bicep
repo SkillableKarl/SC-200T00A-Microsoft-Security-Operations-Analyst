@@ -88,7 +88,7 @@ resource pauseScript 'Microsoft.Resources/deploymentScripts@2023-08-01' = {
   properties: {
     azPowerShellVersion: '12.2.0'
     scriptContent: 'Start-Sleep -Seconds 300'
-    timeout: 'PT30M'
+    timeout: 'PT10M'
     cleanupPreference: 'OnSuccess'
     retentionInterval: 'PT1H'
   }
@@ -140,7 +140,7 @@ resource deploymentScript 'Microsoft.Resources/deploymentScripts@2023-08-01' = {
     azPowerShellVersion: '12.2.0'
     arguments: '-ResourceGroup ${resourceGroup().name} -Workspace ${workspaceName} -Region ${resourceGroup().location} -Solutions ${contentSolutions} -SubscriptionId ${subscriptionId} -TenantId ${subscription().tenantId} -Identity ${scriptIdentity.properties.clientId} '
     scriptContent: loadTextContent('./Create-NewSolutionAndRulesFromList.ps1')
-    timeout: 'PT30M'
+    timeout: 'PT10M'
     cleanupPreference: 'OnSuccess'
     retentionInterval: 'P1D'
   }
@@ -148,3 +148,4 @@ resource deploymentScript 'Microsoft.Resources/deploymentScripts@2023-08-01' = {
     roleAssignment
   ]
 }
+
